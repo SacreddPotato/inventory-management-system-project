@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>📦 Stock Admin</h2>
+        <button id="nav-stock" class="nav-btn active" data-target="stock-panel">📊 View Stock</button>
+        <button id="nav-checkin" class="nav-btn" data-target="checkin-panel">📥 Check In Items</button>
+        <button id="nav-returns" class="nav-btn" data-target="returns-panel">↩️ Returns</button>
+        <div class="divider"></div>
+        <button id="nav-test" class="nav-btn warning-btn" data-target="test-panel">⚡ Test: Fake Sale</button>
+    </nav>
+
+    <main>
+        <section id="stock-panel" class="panel">
+            <header>
+                <h1>Current Stock Levels</h1>
+                <button id="btn-refresh">🔄 Refresh List</button>
+            </header>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Barcode ID</th>
+                        <th>Product Name</th>
+                        <th>Total Count</th>
+                        <th>Reserved (Sold)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="stock-body">
+                    </tbody>
+            </table>
+        </section>
+
+        <section id="checkin-panel" class="panel hidden">
+            <header><h1>Check In New Items</h1></header>
+            <div class="scanner-box">
+                <label>Step 1: Enter Barcode ID</label>
+                <input type="text" id="barcode-input" placeholder="e.g. 101">
+                
+                <label>Step 2: Is it broken?</label>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="check-broken">
+                    <label for="check-broken" class="danger-label">🚩 Yes, it's broken</label>
+                </div>
+
+                <button id="btn-add-stock" class="primary-btn">Add to Stock</button>
+            </div>
+            
+            <div id="shelf-result" class="alert-box hidden">
+                <h3 id="result-title">✅ Added</h3>
+                <p>Put this item on Shelf: <strong id="shelf-location">...</strong></p>
+            </div>
+        </section>
+
+        <section id="returns-panel" class="panel hidden">
+            <header><h1>Process a Return</h1></header>
+            <div class="form-box">
+                <label>Order ID or Barcode ID:</label>
+                <input type="text" id="return-id" placeholder="e.g. 500">
+
+                <label>What is the condition?</label>
+                <select id="condition-select">
+                    <option value="good">Good (Like New)</option>
+                    <option value="scratched">Minor Scratch</option>
+                    <option value="broken">Totally Broken</option>
+                </select>
+
+                <div class="action-row">
+                    <button id="btn-action-restock" class="btn-green">Put on Shelf</button>
+                    <button id="btn-action-repair" class="btn-yellow">Send to Repair</button>
+                    <button id="btn-action-trash" class="btn-red">Throw Away</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="test-panel" class="panel hidden">
+            <header><h1>⚡ Test: Simulate Sale</h1></header>
+            <p>Use this to pretend a customer just bought something online.</p>
+            
+            <div class="card">
+                <h3>Create Fake Order</h3>
+                <label>Barcode ID to Buy:</label>
+                <input type="text" id="test-barcode" value="101">
+                <button id="btn-run-test" class="btn-blue">Buy Now</button>
+                <p id="test-status" class="status-text"></p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
