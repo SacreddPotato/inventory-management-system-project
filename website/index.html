@@ -9,12 +9,12 @@
 <body>
 
     <nav class="sidebar">
-        <h2>📦 Stock Admin</h2>
-        <button id="nav-stock" class="nav-btn active" data-target="stock-panel">📊 View Stock</button>
-        <button id="nav-checkin" class="nav-btn" data-target="checkin-panel">📥 Check In Items</button>
-        <button id="nav-returns" class="nav-btn" data-target="returns-panel">↩️ Returns</button>
+        <h2>Stock Admin</h2>
+        <button id="nav-stock" class="nav-btn active" data-target="stock-panel">View Stock</button>
+        <button id="nav-checkin" class="nav-btn" data-target="checkin-panel">Check In Items</button>
+        <button id="nav-returns" class="nav-btn" data-target="returns-panel">Returns</button>
         <div class="divider"></div>
-        <button id="nav-test" class="nav-btn warning-btn" data-target="test-panel">⚡ Test: Fake Sale</button>
+        <button id="nav-test" class="nav-btn warning-btn" data-target="test-panel">Test: Fake Sale</button>
     </nav>
 
     <main>
@@ -54,7 +54,7 @@
             </div>
             
             <div id="shelf-result" class="alert-box hidden">
-                <h3 id="result-title">✅ Added</h3>
+                <h3 id="result-title">Added</h3>
                 <p>Put this item on Shelf: <strong id="shelf-location">...</strong></p>
             </div>
         </section>
@@ -81,7 +81,7 @@
         </section>
 
         <section id="test-panel" class="panel hidden">
-            <header><h1>⚡ Test: Simulate Sale</h1></header>
+            <header><h1>Test: Simulate Sale</h1></header>
             <p>Use this to pretend a customer just bought something online.</p>
             
             <div class="card">
@@ -90,6 +90,17 @@
                 <input type="text" id="test-barcode" value="101">
                 <button id="btn-run-test" class="btn-blue">Buy Now</button>
                 <p id="test-status" class="status-text"></p>
+            </div>
+
+            <div class="card test-card danger">
+                <h3>Concurrent Sales Test (Race Condition)</h3>
+                <p>This sends multiple purchase requests at the exact same time to test row locking.</p>
+                <label>Barcode ID:</label>
+                <input type="text" id="concurrent-barcode" value="101">
+                <label>Number of simultaneous requests:</label>
+                <input type="number" id="concurrent-count" value="5" min="2" max="20">
+                <button id="btn-run-concurrent" class="btn-red">Run Concurrent Test</button>
+                <div id="concurrent-results"></div>
             </div>
         </section>
 

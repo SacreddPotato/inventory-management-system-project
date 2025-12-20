@@ -180,3 +180,66 @@ select {
     border-radius: 4px;
     cursor: pointer;
 }
+
+/* Concurrent test styles */
+.test-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+.test-card.danger {
+    border: 2px solid #e74c3c;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.results-table th,
+.results-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.results-table th {
+    background: #34495e;
+    color: white;
+}
+
+.results-header {
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.result-success {
+    background: #d4edda;
+}
+
+.result-fail {
+    background: #f8d7da;
+}
+
+.summary-success {
+    background: #27ae60;
+    color: white;
+    padding: 8px;
+}
+
+.summary-fail {
+    background: #e74c3c;
+    color: white;
+    padding: 8px;
+}
+
+.status-running {
+    color: #3498db;
+    font-style: italic;
+}
